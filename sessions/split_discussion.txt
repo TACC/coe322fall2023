@@ -1,0 +1,78 @@
+================ Good
+
+void split(const vector<int>& inputVector, vector<int>& oddVector, vector<int>& evenVector) {
+    for (int num : inputVector) {
+        if (num % 2 == 0) {
+            evenVector.push_back(num); // add it to the even vector
+        }
+        else {
+            oddVector.push_back(num); // add it to the odd vector
+        }
+    }
+}
+
+================ also fine
+
+vector<vector<int> > evensort(vector<int> v){
+
+
+================ Not a fan
+
+    vector<int> inputVector;
+    inputVector.push_back(5);
+    inputVector.push_back(6);
+    inputVector.push_back(2);
+    inputVector.push_back(4);
+    inputVector.push_back(5);
+
+================ fine-ish
+
+----------------
+
+for (int i=0;i<size(input);i++){
+    if (input.at(i)%2 == 0){    
+    
+consider range-based for
+
+----------------
+
+for (int i=0; i<input.size(); i++) {
+    num=input[i];
+
+bound checking
+
+----------------
+
+    if (inputVect.at(i) % 2 == 0){
+      evens.push_back(inputVect.at(i));
+    }
+    else{
+      odds.push_back(inputVect.at(i));
+    }
+
+chance of typos. do:
+
+auto val = inputVect.at(i)
+if (val%2==0)
+  evens.push_back(val)
+
+================ Nope
+
+void split(vector<int> inpVec, vector<int>* evenVec, vector<int>* oddVec){
+
+From now on I don't want to see stars in function definitions.
+
+(If you're this student, talk to me after class)
+
+================ Nope-ish
+
+void print(vector<int> &ints) {
+        for (vector<int>::iterator i = ints.begin(); i != ints.end(); i++) {
+                cout << *i;
+                if (i + 1 != ints.end()) {
+                        cout << ", ";
+                }
+        }
+        cout << endl;
+}
+

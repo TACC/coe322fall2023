@@ -1,0 +1,14 @@
+================ naming
+
+    //for loop to test each collatz sequence for numbers 1-1000
+    for(int n=1;n<limit;n++){
+        int i=n; //creating a new int so as not to accidentally end the loop early
+        int count=0;
+        while(i!=1){ //continuing until the sequence reaches the value 1
+
+how about "starting_value" and "current_iterate"?
+
+================ too much
+
+void collatz(int n, int m){
+    vector<int> king; // Vector to store current longest sequence
