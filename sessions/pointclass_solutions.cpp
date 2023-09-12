@@ -19,6 +19,7 @@ class Point {
 private:
   float x,y;
 public:
+  Point( float u ) { x=u; y=u; };
   Point(float ux,float uy) { x = ux; y = uy; };
   float distance_to_origin() {
     return sqrt( x*x + y*y );
@@ -30,7 +31,24 @@ public:
     float dx = x-other.x, dy = y-other.y;
     return sqrt( dx*dx + dy*dy );
   };
+  Point halfway( Point other ) {
+    float hx = (x+other.x)/2;
+    float hy = (y+other.y)/2;
+    Point h(hx,hy); return h;
+    //    return Point(hx,hy);
+  };
 };
+
+class LinearFunction {
+private:
+  Point p1,p2;
+public:
+  LinearFunction( Point i1,Point i2 )
+    : p1(i1),p2(i2) {};
+  float evaluate_at( float x ) {
+  };
+};
+
 
 int main() {
   Point p1(1.0,1.0);
@@ -41,6 +59,20 @@ int main() {
   Point p2(2.,2.);
   cout << "between points: " 
        << p1.distance(p2) << '\n';
+  Point h = p1.halfway(p2);
+  
+  // using the other construct
+  Point diag(5);
 
+  LinearFunction( p1,p2 );
   return 0;
 }
+
+// emacs
+// C-f forward
+// C-b backward
+// Esc f word forward
+// Esc b work backward
+
+// C-t toggle two characters
+// ESC t togle words
