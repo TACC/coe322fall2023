@@ -49,6 +49,16 @@ public:
   };
 };
 
+class Rectangle {
+private:
+  Point bl;
+  float w,h;
+public:
+  Rectangle( Point botleft,float wid,float hit ) 
+    : bl(botleft), w(wid), h(hit) {
+  }
+  float area() { return w*h; };
+};
 
 int main() {
   Point p1(1.0,1.0);
@@ -61,10 +71,13 @@ int main() {
        << p1.distance(p2) << '\n';
   Point h = p1.halfway(p2);
   
+  
   // using the other construct
   Point diag(5);
 
   LinearFunction( p1,p2 );
+
+  Rectangle r( p1,5,2 );
   return 0;
 }
 
@@ -76,3 +89,8 @@ int main() {
 
 // C-t toggle two characters
 // ESC t togle words
+
+// C-x 2 : divide screen vertically
+// C-x 3 : dividde screen horizontally
+// C-x o : go to other panel
+// C-x 0 : remove other panels
