@@ -12,6 +12,9 @@
 using std::cin;
 using std::cout;
 
+#include <string>
+using std::string;
+
 #include <cmath>
 using std::sqrt;
 
@@ -53,11 +56,25 @@ class Rectangle {
 private:
   Point bl;
   float w,h;
+protected:
+  string type{"rectangle"};
 public:
   Rectangle( Point botleft,float wid,float hit ) 
+    // member initializer list
     : bl(botleft), w(wid), h(hit) {
   }
   float area() { return w*h; };
+};
+
+class Square : public Rectangle {
+public :
+  Square( Point botleft,float wid )
+    // invoke constructor of base class
+    : Rectangle( botleft,wid,wid ) {
+    // just to show that you may need to do
+    // something in the constructor.
+    type = "square";
+  };
 };
 
 int main() {
@@ -78,6 +95,10 @@ int main() {
   LinearFunction( p1,p2 );
 
   Rectangle r( p1,5,2 );
+
+  Square s( p1,3.16 );
+  cout << "Area of square: " << s.area() << '\n';
+
   return 0;
 }
 
@@ -94,3 +115,5 @@ int main() {
 // C-x 3 : dividde screen horizontally
 // C-x o : go to other panel
 // C-x 0 : remove other panels
+
+// C-l : current line to mid/top/bot of screen
