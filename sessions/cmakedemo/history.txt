@@ -30,3 +30,12 @@
 
 ## confirm that the executable is in the install directory
  ls ../installion/
+
+## there is much to customize about cmake
+## for instance to use another compiler:
+cmake -D CMAKE_CXX_COMPILER=icpc ../src/
+
+## output includes:
+-- The CXX compiler identification is Intel 19.1.0.20200306
+-- Check for working CXX compiler: /opt/intel/compilers_and_libraries_2020.1.217/linux/bin/intel64/icpc
+-- Check for working CXX compiler: /opt/intel/compilers_and_libraries_2020.1.217/linux/bin/intel64/icpc - works
