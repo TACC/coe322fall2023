@@ -1,0 +1,41 @@
+## create a directory for this demo
+ mkdir cmakedemo
+ cd cmakedemo/
+
+## create a minimal hello world program
+ cat > src/program.cpp
+
+## also create CMakeLists.txt in the src dir
+ cat > src/CMakeLists.txt
+
+## create a build directory next to the src
+ mkdir build
+
+## go into the build directory
+ cd build/
+
+## invoke cmake with the source location
+ cmake ../src/
+
+## we now have the executable,
+## here, in the build directory
+ ./victorsez 
+
+## the build directory contains temporary crap
+## so you may want the install to go elsewhere:
+## add a "prefix" to the cmake invocation
+ cmake -D CMAKE_INSTALL_PREFIX=../installion ../src/
+ make 
+ make install
+
+## confirm that the executable is in the install directory
+ ls ../installion/
+
+## there is much to customize about cmake
+## for instance to use another compiler:
+cmake -D CMAKE_CXX_COMPILER=icpc ../src/
+
+## output includes:
+-- The CXX compiler identification is Intel 19.1.0.20200306
+-- Check for working CXX compiler: /opt/intel/compilers_and_libraries_2020.1.217/linux/bin/intel64/icpc
+-- Check for working CXX compiler: /opt/intel/compilers_and_libraries_2020.1.217/linux/bin/intel64/icpc - works
