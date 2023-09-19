@@ -1,0 +1,56 @@
+================ Basically
+
+class primegenerator {
+private:
+    int current;
+    int numPrimes;
+
+public:
+    primegenerator() : current(2), numPrimes(0) {}
+
+    int nextprime() {
+        while (!isprime(current)) {
+            current++;
+        }
+        numPrimes++;
+        return current++;
+    }
+
+    int number_of_primes_found() const {
+        return numPrimes;
+    }
+};
+
+================ plenty of minor variants found
+
+  int nextprime(){
+    int oldPrime = currentPrime;
+    currentPrime++;
+    while (!isprime(currentPrime)){
+      currentPrime++;
+    }
+    numPrimes++;
+    return oldPrime;
+  };
+
+================ comment #1
+
+    int nextprime() {
+        //Generates next prime value and checks using is_prime()
+        bool prime_found = 0;
+
+================ comment #2
+
+    bool is_number_prime = false;
+    while(is_number_prime == false){
+
+================ comment #3
+
+    while (true) {
+      // Check if the candidate number is prime
+      if (isprime(i)) {
+        // If it's prime, add it to the list of primes and update last_checked
+        primes.push_back(i);
+        last_checked = i;
+        return i;
+
