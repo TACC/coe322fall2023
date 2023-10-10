@@ -15,8 +15,8 @@ using std::cout;
 #include <cmath>
 using std::sqrt;
 
-#include <vector>
-using std::vector;
+#include <fmt/format.h>
+using fmt::format,fmt::print;
 
 #include <memory>
 using std::make_shared,std::shared_ptr;
@@ -26,15 +26,15 @@ protected:
   float x,y;
 public:
   Point(float ux,float uy) { x = ux; y = uy; };
+  // Point class methods
+  float dx( Point other ) {
+    return other.x-x; };
+  float dy( Point other ) {
+    return other.y-y; };
   float distance(Point other) {
-    float xd = x-other.x, yd = y-other.y;
-    return sqrt( xd*xd + yd*yd );
+    float wd = dx(other), ht = dy(other);
+    return sqrt( wd*wd + ht*ht );
   };
-  void scale( float by ) { x *= by; y *= by; };
-  float dx( Point other ) { return x-other.x; };
-  float dy( Point other ) { return y-other.y; };
-  float get_x() { return x; };
-  float get_y() { return y; };
 };
 
 class Rectangle {
@@ -60,19 +60,37 @@ public:
 
 int main() {
 
-  auto
-    origin  = make_shared<Point>(0,0),
-    fivetwo = make_shared<Point>(5,2);
-  DynRectangle lielow( origin,fivetwo );
+  {
+    // main, with objects
+    Point
+      oneone(1,1), fivetwo(5,2);
+    float dx = oneone.dx(fivetwo);
+    print( "dx: {}\n",dx );	   
+  }
 
-  // record the area:
-  cout << "Area: " <<  lielow.area() << '\n';
+  {
+    // main, with pointers
+    auto
+      oneonep  = make_shared<Point>(1,1),
+      fivetwop = make_shared<Point>(5,2);
+    print( "dx: {}\n",dx );	   
+  }
 
-  // scale the `fivetwo' point by two
-  fivetwo->scale(2);
+  {
+    auto
+      origin  = make_shared<Point>(0,0),
+      fivetwo = make_shared<Point>(5,2);
+    DynRectangle lielow( origin,fivetwo );
 
-  // now the area should be 4x as much:
-  cout << "Area: " <<  lielow.area() << '\n';
+    // record the area:
+    cout << "Area: " <<  lielow.area() << '\n';
+
+    // scale the `fivetwo' point by two
+    fivetwo->scale(2);
+
+    // now the area should be 4x as much:
+    cout << "Area: " <<  lielow.area() << '\n';
+  }
 
   return 0;
 }
