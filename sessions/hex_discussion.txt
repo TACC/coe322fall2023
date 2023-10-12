@@ -1,0 +1,30 @@
+================ Basically
+
+  for (int i = 0; i < 16; i++) {
+    for (int j = 0; j < 16; j++) {
+      int num = 16 * i + j;
+      fmt::print("{:02x} ", num);
+    }
+    fmt::print("\n");
+  }
+
+================ Someone has read the manual
+
+fmt::print("{0:0>2x} ", 16*i+j);
+
+================ Uhhhhhhhh
+
+        cout << std::setbase(16) << setfill(' ');
+        for (int i = 0; i < 16; i++) {
+                for (int j = 0; j < 16; j++){
+                        if (i == 0){
+                                cout << 0; //add 0 in front if i == 0 for formatting
+                        }
+                        cout << i * 16 + j << " ";
+
+================ Uh, no
+
+    for (int i = 0; i < 16; ++i) {
+        for (int j = 0; j < 16; ++j) {
+            int n = i * 16 + j;
+            printf("%02x ", n);
