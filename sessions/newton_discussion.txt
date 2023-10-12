@@ -1,0 +1,43 @@
+================ Good
+
+double newton_root( function<double(double)> f,
+     function<double(double)> fprime){
+    // regular implementation
+}
+
+double newton_root( function<double(double)> f){
+  auto fprime = [f] (double x)  {
+        return (f(x+0.000001)-f(x))/0.000001;};
+  return newton_root(f, fprime);
+}
+
+
+================
+
+double newton_root( function <double(double)> f ){
+        double h = 1e-6;
+        return newton_root(f, [f,h](double xn){return (f(xn + h) - f(xn)) / h;});
+};
+
+================ Ok'ish
+
+double newton_root
+    (function<double(double)>f, function<double(double)>fprime){
+    // regular implementation
+}
+*/
+
+double newton_root
+    (function<double(double)>f){
+  while (true){
+    // stuff
+    double fprime = (f(x+1.e-6)-f(x))/1.e-6; 
+    x = x - fx/fprime;
+  }
+  return x;
+}
+
+================ Capture!
+
+auto f = [] (double x, double i) -> double {return x*x - i;};
+newton_root(f, n )
