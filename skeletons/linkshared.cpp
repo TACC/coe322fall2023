@@ -166,6 +166,10 @@ int Node::length() {
     return 1+next->length();
 };
 
+/*
+ * Iterative alternative
+ * to recursive computation
+ */
 int List::length_iterative() {
   int count = 0;
   if (head!=nullptr) {
@@ -177,6 +181,9 @@ int List::length_iterative() {
   return count;
 };
 
+/*
+ * Auxiliary functions
+ */
 void Node::print() {
   cout << datavalue << ":" << datacount;
   if (has_next()) {
