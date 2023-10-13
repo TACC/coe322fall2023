@@ -23,73 +23,39 @@ using std::vector;
 
 #include <cassert>
 
-class Node {
-private:
-  int datavalue{0},datacount{0};
-  shared_ptr<Node> next{nullptr};
-public:
-  Node() {}
-  Node(int value,shared_ptr<Node> next=nullptr)
-    : datavalue(value),datacount(1),next(next) {};
-  int value() {
-    return datavalue; };
-  auto nextnode() {
-    return next; };
-  int count() {
-    return datacount; };
-  int listlength() {
-    if (!has_next()) return 1;
-    else return 1+next->listlength();
-  };
-  bool has_next() {
-    return next!=nullptr; };
-  void insert(int value);
-  void print() {
-    cout << datavalue << ":" << datacount;
-    if (has_next()) {
-      cout << ", "; next->print();
-    }
-  };
-};
-
+class Node; // forward definition
 class List {
 private:
   shared_ptr<Node> head{nullptr};
 public:
   List() {};
   auto headnode() { return head; };
-  bool has_list() {
-    return head!=nullptr; };
   void insert(int value);
-  int length() {
-    int count = 0;
-    auto current_node = head;
-    while (current_node->has_next()) {
-      current_node = current_node->nextnode(); count += 1;
-    }
-    return count;
-  };
-  int length_iterative() {
-    int count = 0;
-    if (has_list()) {
-      auto current_node = head;
-      while (current_node->has_next()) {
-	current_node = current_node->nextnode(); count += 1;
-      }
-    }
-    return count;
-  };
-  int friendlength() {
-    if (head==nullptr) return 0;
-    else return head->listlength();
-  };
+  int length();
+  int length_iterative();
   bool contains_value(int v);
-  void print() {
-    cout << "List:";
-    if (has_list())
-      cout << " => "; head->print();
-    cout << '\n';
-  };
+  void print();
+};
+
+class Node {
+private:
+  int datavalue{0},datacount{0};
+  shared_ptr<Node> next{nullptr};
+public:
+  Node() {};
+  Node(int value,shared_ptr<Node> next=nullptr)
+    : datavalue(value),datacount(1),next(next) {};
+  int value() {
+    return datavalue; };
+  auto nextnode() {
+    return next; };
+  int length();
+  int count() {
+    return datacount; };
+  bool has_next() {
+    return next!=nullptr; };
+  void insert(int value);
+  void print();
 };
 
 int main() {
@@ -165,7 +131,7 @@ int main() {
     cout << "Hm. Should contain 3" << '\n';
   cout << '\n';
 
-  cout << "List has length: " << mylist.friendlength() << '\n';
+  cout << "List has length: " << mylist.length() << '\n';
   cout << '\n';
 
   {
@@ -180,5 +146,49 @@ int main() {
   
   return 0;
 }
+
+/*
+ * Compute the length of a list recursively
+ * See below for an iterative solution
+ */
+int List::length() {
+  int count = 0;
+  if (head==nullptr)
+    return 0;
+  else
+    return head->length();
+};
+
+int Node::length() {
+  if (!has_next())
+    return 1;
+  else
+    return 1+next->length();
+};
+
+int List::length_iterative() {
+  int count = 0;
+  if (head!=nullptr) {
+    auto current_node = head;
+    while (current_node->has_next()) {
+      current_node = current_node->nextnode(); count += 1;
+    }
+  }
+  return count;
+};
+
+void Node::print() {
+  cout << datavalue << ":" << datacount;
+  if (has_next()) {
+    cout << ", "; next->print();
+  }
+};
+
+void List::print() {
+  cout << "List:";
+  if (head!=nullptr)
+    cout << " => "; head->print();
+  cout << '\n';
+};
 
 
