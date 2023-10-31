@@ -9,7 +9,7 @@
 ####
 ################################################################
 
-cmake_minimum_required( VERSION 3.20 )
+cmake_minimum_required( VERSION 3.17 )
 project( zeroclass VERSION 1.0 )
 
 add_executable( zeromain
@@ -17,7 +17,7 @@ add_executable( zeromain
 ## add_executable( zerotest
 ##     zeroclasstest.cpp zeroclasslib.cpp zeroclasslib.hpp )
 target_compile_features( zeromain PRIVATE cxx_std_17 )
-target_compile_features( zerotest PRIVATE cxx_std_17 )
+## target_compile_features( zerotest PRIVATE cxx_std_17 )
 
 ##
 ## Extra packages: catch2
@@ -56,5 +56,5 @@ set_target_properties(
 ## 	INSTALL_RPATH "${CATCH2_LIBRARY_DIRS}"
 ##     )
 
-install( TARGETS zeromain zerotest DESTINATION . )
+install( TARGETS zeromain DESTINATION . )
 
