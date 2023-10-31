@@ -14,8 +14,8 @@ project( zeroclass VERSION 1.0 )
 
 add_executable( zeromain
     zeroclassmain.cpp zeroclasslib.cpp zeroclasslib.hpp )
-add_executable( zerotest
-    zeroclasstest.cpp zeroclasslib.cpp zeroclasslib.hpp )
+## add_executable( zerotest
+##     zeroclasstest.cpp zeroclasslib.cpp zeroclasslib.hpp )
 target_compile_features( zeromain PRIVATE cxx_std_17 )
 target_compile_features( zerotest PRIVATE cxx_std_17 )
 
@@ -27,34 +27,34 @@ pkg_check_modules( CATCH2 REQUIRED catch2-with-main )
 target_include_directories( 
 	zeromain PUBLIC ${CATCH2_INCLUDE_DIRS}
 	)
-target_include_directories( 
-	zerotest PUBLIC ${CATCH2_INCLUDE_DIRS}
-	)
+## target_include_directories( 
+## 	zerotest PUBLIC ${CATCH2_INCLUDE_DIRS}
+## 	)
 
 target_link_directories(
 	zeromain PUBLIC ${CATCH2_LIBRARY_DIRS}
-	)
-target_link_directories(
-	zerotest PUBLIC	${CATCH2_LIBRARY_DIRS}
 	)
 
 target_link_libraries(
 	zeromain PUBLIC ${CATCH2_LIBRARIES}
 	)
-target_link_libraries(
-	zerotest PUBLIC ${CATCH2_LIBRARIES}
-	)
+## target_link_directories(
+## 	zerotest PUBLIC	${CATCH2_LIBRARY_DIRS}
+## 	)
+## target_link_libraries(
+## 	zerotest PUBLIC ${CATCH2_LIBRARIES}
+## 	)
 
 set_target_properties(
 	zeromain PROPERTIES
 	BUILD_RPATH   "${CATCH2_LIBRARY_DIRS}"
 	INSTALL_RPATH "${CATCH2_LIBRARY_DIRS}"
     )
-set_target_properties(
-	zerotest PROPERTIES
-	BUILD_RPATH   "${CATCH2_LIBRARY_DIRS}"
-	INSTALL_RPATH "${CATCH2_LIBRARY_DIRS}"
-    )
+## set_target_properties(
+## 	zerotest PROPERTIES
+## 	BUILD_RPATH   "${CATCH2_LIBRARY_DIRS}"
+## 	INSTALL_RPATH "${CATCH2_LIBRARY_DIRS}"
+##     )
 
 install( TARGETS zeromain zerotest DESTINATION . )
 
