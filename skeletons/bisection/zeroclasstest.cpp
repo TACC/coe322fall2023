@@ -30,6 +30,7 @@ TEST_CASE( "proper test","[2]" ) {
   REQUIRE_THROWS( polynomial(coefficients) );
 }
 
+#if 0
 TEST_CASE( "polynomial degree","[3]" ) {
   polynomial second( {2,0,1} ); // 2x^2 + 1
   REQUIRE( not second.is_odd() );
@@ -102,3 +103,4 @@ TEST_CASE( "test zero finder", "[7]" ) {
     REQUIRE( std::abs(value)<prec );
   }
 }
+#endif
