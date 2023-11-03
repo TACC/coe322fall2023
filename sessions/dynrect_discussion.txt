@@ -1,0 +1,44 @@
+================ Correct
+
+class DynRectangle {
+private:
+  shared_ptr<Point> bottom_left;
+  shared_ptr<Point> top_right;
+public:
+  DynRectangle(shared_ptr<Point> bl, shared_ptr<Point> tr)
+    : bottom_left(bl), top_right(tr) {};
+  float area() {
+    float xsize = bottom_left->dx(*top_right);
+    float ysize = bottom_left->dy(*top_right);
+    return xsize * ysize;
+  }
+};
+
+could use std::abs
+
+================ overspecification
+
+class DynRectangle {
+private:
+  float length, width, rect_area;
+  shared_ptr<Point>lower_point;
+  shared_ptr<Point>upper_point;
+
+
+================ wrong
+
+class DynRectangle {
+private:
+  shared_ptr<Point> p1, p2;
+public:
+  // stuff
+  void shift(float xshift, float yshift) {
+    p1->setX(p1->getX() + xshift);
+    p2->setX(p2->getX() + xshift);
+    p1->setY(p1->getY() + yshift);
+    p2->setY(p2->getY() + yshift);
+  }
+};
+
+Think where things belong: the question was to move a point,
+and the rectangle moves with it.
