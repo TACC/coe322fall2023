@@ -28,6 +28,18 @@ public:
 };
 
 
+
+int main() {
+
+  namedvector fivevec("five",5);
+  cout << fivevec.name()
+       << ": "
+       << fivevec.size()
+       << '\n';
+  cout << "at zero: "
+       << fivevec.at(0)
+       << '\n';
+
   
 
   return 0;
