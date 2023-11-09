@@ -14,6 +14,9 @@ using std::cout;
 
 #include <vector>
 #include <string>
+
+#if 0
+// remove the if/endif lines to use this as a basis for the exercise
 class namedvector
   : public std::vector<int> {
 private:
@@ -26,21 +29,27 @@ public:
   auto name() {
     return _name; };
 };
+#endif
 
 
 
 int main() {
 
-  namedvector fivevec("five",5);
-  cout << fivevec.name()
+  namedvector<float> fivetemp("five",5);
+  cout << fivetemp.name()
        << ": "
-       << fivevec.size()
-       << '\n';
+       << fivetemp.size() << '\n';
   cout << "at zero: "
-       << fivevec.at(0)
-       << '\n';
-
+       << fivetemp.at(0) << '\n';
   
+  using namespace geo;
+  geo::vector<float> float4("four",4);
+  cout << float4.name() << '\n';
+  float4[1] = 3.14;
+  cout << float4.at(1) << '\n';
+  geo::vector<std::string> string3("three",3);
+  string3.at(2) = "abc";
+  cout << string3[2] << '\n';
 
   return 0;
 }

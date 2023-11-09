@@ -1,0 +1,29 @@
+Create a session:
+
+tmux new-session -s mysession
+
+that puts you in a session. You can now go into directories,
+open editors, set an environment, and it's all remembered.
+
+Tmux internal commands are prefixed with Control-b. Don't ask me why.
+
+Go out of the session with `d' for `disconnect'.
+
+Ctrl-b d
+
+Go into an existing session:
+
+tmux a -t mysession
+
+Tmux sessions stay alive as long as you don't reboot.
+(My laptop was rebooted 36 days ago, but before that it
+was more like 200 days.)
+
+Permanently close a tmux session with:
+
+Ctrl-d
+
+See what sessions you have:
+
+tmux ls
+
