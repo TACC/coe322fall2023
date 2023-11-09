@@ -1,0 +1,58 @@
+================ evaluation function
+
+Straightforward:
+
+double polynomial::evaluate_at(double x) const
+{
+    int power = coefficients.size() - 1; 
+    int index = 0;
+    double fx = 0.0;                  
+    while (power >= 0) {
+        fx += coefficients.at(index) * pow(x, power);
+        power--;
+        index++;
+    }
+    return fx;
+}
+
+---------------- Why not run the loop backwards?
+
+for(int i=0;i<coefficients.size();i++){
+   double coeff = coefficients.at(coefficients.size()-i-1);
+   output = output+coeff*std::pow(x,i);
+}
+
+---------------- Very nice:
+
+for (int i = coefficients.size() - 1; i >= 0; --i) {
+    result += coefficients[i] * x_power;
+    x_power *= x;
+}
+
+---------------- Horner:
+
+double result = coefficients[0]; // Initialize with the highest-degree coefficient
+for (int i = 1; i < coefficients.size(); i++)
+    result = result * x + coefficients[i];
+	
+
+================ evaluate by functor
+
+  double operator()(double x) const { return evaluate_at(x); };
+
+================ initial bounds
+
+  while (poly(left)*poly(right) >= 0) {
+    left -= 1.0;
+    right += 1.0;
+  }
+
+================ The whole algorithm
+
+    while (std::abs(midvalue)>prec){
+        find_initial_bounds(coefficients,left,right);
+        move_bounds_closer(coefficients,left,right);
+        midpoint = (left+right)/2;
+        midvalue = coefficients(midpoint);
+    }
+
