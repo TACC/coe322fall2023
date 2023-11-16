@@ -1,0 +1,66 @@
+================ Good.
+
+  Primegenerator primesequence_r;
+
+  for( //stuff ) {
+    prime_r = primesequence_r.nextprime();
+
+    Primegenerator primesequence_q = primesequence_r;
+    int prime_q = primesequence_q.nextprime();
+
+
+================ generators
+
+    for (int r : allPrimes) {       
+        for(int p = 3; p < r; p++){ 
+            if(isPrime(p)){
+
+================ using just one generator
+
+        primegenerator primes;
+        for( stuff ) {
+                int r = primes.nextprime();
+                for(j = 1; !isprime(r+j) || !isprime(r-j); j++){}
+                cout << r-j << "," << r << "," << r+j << endl;
+
+
+================ using a vector?
+
+vector<int> primes = r_sequence.get_prime_list();
+
+================ abstraction layers
+
+class primegenerator {
+  // stuff
+      void goldbach_p_q_gen() {
+        // stuff
+                cout<< "stuff"
+
+
+================ optimized
+
+vector <int> listofprime;
+primegenerator sequence;
+
+        for(int i = 0; i < nprimes; i++) {
+            int number = sequence.nextprime();
+            listofprime.push_back(number);//////////////////////////
+        }
+
+        for (int i=2; i<listofprime.size(); i++) {
+            r = listofprime[i];
+            for (int p = 2; p < listofprime.size(); p++) {
+                for (int q = 2; q < listofprime.size(); q++) {
+
+
+================ unclear structure
+
+  int nextprime(){
+    // stuff
+          find_equidistantprimes(); // find correct p and q
+
+
+================ random style point
+
+int j;//difference between primes
+
