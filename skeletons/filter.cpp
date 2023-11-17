@@ -8,6 +8,14 @@
  ****
  ****************************************************************/
 
+/*
+ * NOTE
+ * first "module load gcc/11"
+ * and   "module load rangev3"
+ * then compile this with
+ * g++ -I${TACC_RANGEV3_INC} filter.cpp
+ */
+
 #include <iostream>
 using std::boolalpha;
 using std::cout;
@@ -17,7 +25,9 @@ using std::vector;
 
 #include <algorithm>
 using std::any_of;
-#include <ranges>
+// #include <ranges>
+// NOTE
+#include <range/v3/all.hpp>
 
 int main() {
 
@@ -26,7 +36,8 @@ int main() {
     {1,-2.2,3.3,-5,7.7,-10};
   auto pos_view =
     numbers
-    | std::ranges::views::filter
+    // NOTE: not std::ranges but just `ranges'
+    | ranges::views::filter
       ( [] (int i) -> bool {
           return i>0; }
        );
