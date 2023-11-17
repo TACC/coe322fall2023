@@ -1,0 +1,51 @@
+1. Compile your code with the "-g" flag.
+
+icpc -o myprogram -g myprogram.cpp
+
+2. Invoke gdb
+
+gdb my program
+
+3. Now you can run it:
+
+run
+
+4. If there was an error, you will now be able to investigate the location of the error:
+
+print n
+
+If you are several function calls deep, do
+
+where
+
+do see the "call stack" and
+
+frame 3
+
+to go to a specific level.
+
+5. Set breakpoints:
+
+break 25
+
+for line 25, or
+
+break 25 if k>6
+
+for a conditional breakpoint.
+
+6. When you are stopped, do
+
+cont
+
+to continue, or
+
+next
+
+and
+
+step
+
+for single line stepping. Hit return to repeat the previous command.
+
+
